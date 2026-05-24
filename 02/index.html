@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>커뮤니티 서비스</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f6f8;
+            color: #222;
+        }
+
+        .container {
+            width: 850px;
+            margin: 40px auto;
+            background-color: #f1f3f5;
+            padding: 32px;
+            border-radius: 12px;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            margin-top: 28px;
+        }
+
+        h3 {
+            cursor: pointer;
+        }
+
+        .comment {
+            border-top: 1px solid #eee;
+            padding: 14px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+
+    <h1>커뮤니티 게시판</h1>
+
+    <h2>글 작성</h2>
+
+    <input id="title" placeholder="제목">
+
+    <br><br>
+
+    <textarea id="content" placeholder="내용 입력"></textarea>
+
+    <br><br>
+
+    <button onclick="createPost()">작성하기</button>
+
+    <h2>글 목록</h2>
+
+    <div id="posts"></div>
+
+    <h2>글 상세</h2>
+
+    <div id="detail">
+        글 제목을 누르면 상세 내용이 보입니다.
+    </div>
+
+
+<script>
+
+async function getPosts(){
+
+    let response = await fetch("/posts")
+
+    let posts = await response.json()
+
+    let html = ""
+
+    for(let post of posts){
+
+    html += `
+        <div class="card">
+            <h3 onclick="showPost(${post.id})">
+                ${post.title}
+            </h3>
+
+            <p>${post.content}</p>
+        </div>
+    `
+}
+
+    document.getElementById("posts").innerHTML = html
+}
+
+
+async function createPost(){
+
+    let title = document.getElementById("title").value
+
+    let content = document.getElementById("content").value
+
+    await fetch(
+        "/posts",
+        {
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                title:title,
+                content:content
+            })
+        }
+    )
+
+    getPosts()
+}
+
+
+async function showPost(id){
+
+    let response = await fetch("/posts/" + id)
+
+    let post = await response.json()
+
+let commentResponse = await fetch("/posts/" + id + "/comments")
+let comments = await commentResponse.json()
+
+let commentHtml = ""
+
+for(let comment of comments){
+    commentHtml += `
+    <div class="comment">
+        <p>💬 ${comment.content}</p>
+    </div>
+    `
+}
+
+document.getElementById("detail").innerHTML = `
+    <h3>${post.title}</h3>
+    <p>${post.content}</p>
+
+    <h3>댓글</h3>
+    ${commentHtml}
+
+    <textarea id="commentContent" placeholder="댓글 입력"></textarea>
+    <br><br>
+    <button onclick="createComment(${id})">댓글 작성</button>
+`
+    
+}
+
+async function createComment(postId){
+
+    let content = document.getElementById("commentContent").value
+
+    await fetch(
+        "/posts/" + postId + "/comments",
+        {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                content:content
+            })
+        }
+    )
+
+    showPost(postId)
+}
+
+
+getPosts()
+
+</script>
+</div>
+</body>
+</html>
