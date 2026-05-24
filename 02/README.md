@@ -1,4 +1,4 @@
-# 02_FastAPI — 커뮤니티 서비스 백엔드
+# 02_FastAPI — 커뮤니티 
 
 FastAPI를 사용하여 커뮤니티 REST API를 구현한 프로젝트입니다.
 
