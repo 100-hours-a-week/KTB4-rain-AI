@@ -23,7 +23,7 @@ https://colab.research.google.com/drive/1oapOyc5Sw-H4mjiZ1BkPLsSdPFO6jq6a#scroll
 - CNN: MNIST 손글씨 숫자 이미지 60000장으로 CNN을 학습시켜 98.83% 정확도를 달성했다. Conv2d로 이미지를 필터로 훑고, MaxPool2d로 크기를 줄이는 구조를 이해했다.
 
 <details>
-<summary>## 느낀점</summary>
+<summary>느낀점</summary>
 
 처음에 사이킷런(sklearn)과 파이토치(PyTorch) 중 어떤 걸 중심으로 써야 할지
 고민이 많았다. 사이킷런이 실무에서 더 많이 쓰인다는 말을 들었기 때문이다.
@@ -38,7 +38,7 @@ https://colab.research.google.com/drive/1oapOyc5Sw-H4mjiZ1BkPLsSdPFO6jq6a#scroll
 </details>
 
 <details>
-<summary>## 개선할 점</summary>
+<summary>개선할 점</summary>
 
 - 다음엔 AI 도움 없이 혼자 코드를 한 줄씩 써보는 연습을 해보고 싶다.
 - 사이킷런과 파이토치의 차이를 좀 더 명확하게 이해하고 싶다.
