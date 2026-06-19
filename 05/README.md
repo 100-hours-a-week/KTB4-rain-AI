@@ -5,7 +5,7 @@
 
 ---
 
-## 📌 프로젝트 개요
+## 프로젝트 개요
 
 한국어 문장을 입력받아 다음 토큰을 예측하고, 이를 반복 생성하여 완전한 문장을 만드는 챗봇입니다.
 
@@ -15,7 +15,7 @@
 
 ---
 
-## 🏗️ 아키텍처
+## 아키텍처
 
 ```
 사용자 입력 (브라우저)
@@ -49,7 +49,7 @@
 
 ---
 
-## 📁 프로젝트 구조
+## 프로젝트 구조
 
 ```
 MiniGPT-Korean/
@@ -69,7 +69,7 @@ MiniGPT-Korean/
 
 ---
 
-## ⚙️ 모델 구조 (GPT-style Decoder Transformer)
+## 모델 구조 (GPT-style Decoder Transformer)
 
 | 항목 | 값 |
 |---|---|
@@ -86,7 +86,7 @@ MiniGPT-Korean/
 
 ---
 
-## 🔁 Autoregressive 생성 방식
+## Autoregressive 생성 방식
 
 ```python
 # 과제 5-1: 다음 글자 1개 예측
@@ -110,7 +110,7 @@ def generate(model, text, device, max_new_tokens=100):
 
 ---
 
-## 🚀 실행 방법
+## 실행 방법
 
 ```bash
 # 1. 가상환경 설정
@@ -137,7 +137,7 @@ python3 main.py
 
 ---
 
-## 🌐 API 엔드포인트
+## API 엔드포인트
 
 | 엔드포인트 | 메서드 | 설명 |
 |---|---|---|
@@ -148,7 +148,7 @@ python3 main.py
 
 ---
 
-## 🐛 트러블슈팅
+## 트러블슈팅
 
 ### 1. `<UNK>` 출력 문제
 **증상**: 모델이 모든 입력에 대해 `<UNK>`만 출력함
@@ -211,7 +211,7 @@ document.getElementById('userInput').addEventListener('keydown', function(e) {
 
 ---
 
-## 🎯 설계 결정과 이유
+## 설계 결정과 이유
 
 | 결정 | 선택 | 이유 |
 |---|---|---|
@@ -244,7 +244,7 @@ document.getElementById('userInput').addEventListener('keydown', function(e) {
 
 ---
 
-## 📦 사용 라이브러리
+## 사용 라이브러리
 
 | 라이브러리 | 버전 | 용도 |
 |---|---|---|
@@ -255,7 +255,7 @@ document.getElementById('userInput').addEventListener('keydown', function(e) {
 
 ---
 
-## 📈 학습 결과
+## 학습 결과
 
 | 데이터 | steps | train loss | val loss |
 |---|---|---|---|
