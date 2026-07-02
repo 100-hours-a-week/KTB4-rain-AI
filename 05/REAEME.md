@@ -108,7 +108,7 @@ main.py (FastAPI)     →  POST /generate — Swagger UI(/docs)로 테스트
 
 ## 파일 구조
 
-\`\`\`
+```
 05/
 ├── data_preprocess.py   # 위키백과 + FineWeb 다운로드/전처리 → corpus.txt
 ├── tokenizer.py           # SentencePiece BPE 토크나이저 학습
@@ -119,7 +119,7 @@ main.py (FastAPI)     →  POST /generate — Swagger UI(/docs)로 테스트
 ├── minigpt.pt              # 학습된 모델 가중치 (용량 문제로 gitignore, 로컬 보관)
 ├── tokenizer.model         # 학습된 토크나이저
 └── MiniGPT.md              # 상세 기술 문서
-\`\`\`
+```
 ## 실행 방법
 
 ```bash
